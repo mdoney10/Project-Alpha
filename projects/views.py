@@ -9,9 +9,7 @@ from projects.forms import ProjectForm
 @login_required
 def list_projects(request):
     projects = Project.objects.filter(owner=request.user)
-    context = {
-        "projects": projects
-    }
+    context = {"projects": projects}
     return render(request, "projects/list.html", context)
 
 
@@ -36,7 +34,5 @@ def create_project(request):
 
     else:
         form = ProjectForm()
-    context = {
-        "form": form
-    }
+    context = {"form": form}
     return render(request, "projects/create.html", context)

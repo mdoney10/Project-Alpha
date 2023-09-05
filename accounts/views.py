@@ -3,8 +3,6 @@ from accounts.forms import LogInForm, SignUpForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 
-# Create your views here.
-
 
 def user_login(request):
     if request.method == "POST":
@@ -12,11 +10,7 @@ def user_login(request):
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
-            user = authenticate(
-                request,
-                username=username,
-                password=password
-            )
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
                 return redirect("list_projects")
